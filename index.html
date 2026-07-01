@@ -136,69 +136,81 @@
         <div class="orb hero-orb-2" aria-hidden="true"></div>
         <div class="orb hero-orb-3" aria-hidden="true"></div>
 
-        <!-- Floating mini-cards (desktop only) -->
-        <div class="hero-float-cards" aria-hidden="true">
-            <div class="hero-float-card">
-                <div class="hero-float-icon">🚀</div>
-                <div>
-                    <div style="font-size:.85rem;font-weight:700;color:#fff;">120+ Projects</div>
-                    <div style="font-size:.7rem;color:#9AA5BE;">Successfully Delivered</div>
-                </div>
-            </div>
-            <div class="hero-float-card">
-                <div class="hero-float-icon">🌍</div>
-                <div>
-                    <div style="font-size:.85rem;font-weight:700;color:#fff;">Global Clients</div>
-                    <div style="font-size:.7rem;color:#9AA5BE;">Across 15+ Countries</div>
-                </div>
-            </div>
-            <div class="hero-float-card">
-                <div class="hero-float-icon">⭐</div>
-                <div>
-                    <div style="font-size:.85rem;font-weight:700;color:#fff;">5★ Rating</div>
-                    <div style="font-size:.7rem;color:#9AA5BE;">Client Satisfaction</div>
-                </div>
-            </div>
-        </div>
+        <div class="container hero-container">
+            <div class="hero-split-grid">
+                
+                <!-- Left Column: Content -->
+                <div class="hero-left-content">
+                    <div class="hero-badge">
+                        <div class="hero-badge-dot"></div>
+                        Galaxy Smart System · Est. 2019
+                    </div>
 
-        <div class="hero-content">
-            <div class="hero-badge">
-                <div class="hero-badge-dot"></div>
-                Galaxy Smart System · Est. 2019
-            </div>
+                    <h1 class="hero-title">
+                        We Build<br>
+                        <span class="line2">Future Technology</span>
+                    </h1>
 
-            <h1 class="hero-title">
-                We Build<br>
-                <span class="line2">Future Technology</span>
-            </h1>
+                    <p class="hero-tagline">
+                        <span id="hero-typing"></span><span class="typing-cursor" aria-hidden="true"></span>
+                    </p>
 
-            <p class="hero-tagline">
-                <span id="hero-typing"></span><span class="typing-cursor" aria-hidden="true"></span>
-            </p>
+                    <div class="hero-ctas">
+                        <a href="#projects" class="btn btn-primary" id="hero-cta-projects">
+                            🚀 Explore Projects
+                        </a>
+                        <a href="#contact" class="btn btn-outline" id="hero-cta-contact">
+                            💬 Contact Us
+                        </a>
+                    </div>
 
-            <div class="hero-ctas">
-                <a href="#projects" class="btn btn-primary" id="hero-cta-projects">
-                    🚀 Explore Projects
-                </a>
-                <a href="#contact" class="btn btn-outline" id="hero-cta-contact">
-                    💬 Contact Us
-                </a>
-            </div>
-
-            <!-- Mobile app extras (hidden on desktop) -->
-            <div class="mob-app-extras">
-                <div class="mob-stat-strip">
-                    <div class="mob-stat-pill"><span>📁</span><strong>120+</strong><small>Projects</small></div>
-                    <div class="mob-stat-pill"><span>🧩</span><strong>25+</strong><small>Tech</small></div>
-                    <div class="mob-stat-pill"><span>😊</span><strong>80+</strong><small>Clients</small></div>
-                    <div class="mob-stat-pill"><span>🏆</span><strong>5+</strong><small>Years</small></div>
+                    <!-- Mobile app extras (hidden on desktop) -->
+                    <div class="mob-app-extras">
+                        <div class="mob-stat-strip">
+                            <div class="mob-stat-pill"><span>📁</span><strong>120+</strong><small>Projects</small></div>
+                            <div class="mob-stat-pill"><span>🧩</span><strong>25+</strong><small>Tech</small></div>
+                            <div class="mob-stat-pill"><span>😊</span><strong>80+</strong><small>Clients</small></div>
+                            <div class="mob-stat-pill"><span>🏆</span><strong>5+</strong><small>Years</small></div>
+                        </div>
+                        <div class="mob-quick-grid">
+                            <a href="#about" class="mob-quick-item"><span class="mob-quick-icon">🌌</span><span>About</span></a>
+                            <a href="#team" class="mob-quick-item"><span class="mob-quick-icon">🧑‍🚀</span><span>Team</span></a>
+                            <a href="#tech" class="mob-quick-item"><span class="mob-quick-icon">⚡</span><span>Tech</span></a>
+                            <a href="#contact" class="mob-quick-item"><span class="mob-quick-icon">📨</span><span>Contact</span></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="mob-quick-grid">
-                    <a href="#about" class="mob-quick-item"><span class="mob-quick-icon">🌌</span><span>About</span></a>
-                    <a href="#team" class="mob-quick-item"><span class="mob-quick-icon">🧑‍🚀</span><span>Team</span></a>
-                    <a href="#tech" class="mob-quick-item"><span class="mob-quick-icon">⚡</span><span>Tech</span></a>
-                    <a href="#contact" class="mob-quick-item"><span class="mob-quick-icon">📨</span><span>Contact</span></a>
+
+                <!-- Right Column: Visual Graphic & Floating Cards -->
+                <div class="hero-right-visual" aria-hidden="true">
+                    <div class="hero-visual-inner">
+                        <img src="./assets/images/hero-visual.png" alt="Galaxy Future Technology" class="hero-img-graphic">
+                        
+                        <!-- Floating cards (desktop only) -->
+                        <div class="hero-float-card card-1 float-anim">
+                            <div class="hero-float-icon">🚀</div>
+                            <div>
+                                <div class="float-card-title">120+ Projects</div>
+                                <div class="float-card-desc">Successfully Delivered</div>
+                            </div>
+                        </div>
+                        <div class="hero-float-card card-2 float-anim" style="animation-delay:1.5s;">
+                            <div class="hero-float-icon">🌍</div>
+                            <div>
+                                <div class="float-card-title">Global Clients</div>
+                                <div class="float-card-desc">Across 15+ Countries</div>
+                            </div>
+                        </div>
+                        <div class="hero-float-card card-3 float-anim" style="animation-delay:3s;">
+                            <div class="hero-float-icon">⭐</div>
+                            <div>
+                                <div class="float-card-title">5★ Rating</div>
+                                <div class="float-card-desc">Client Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
 

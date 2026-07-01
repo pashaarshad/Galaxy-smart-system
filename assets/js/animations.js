@@ -250,11 +250,11 @@ export function initParticles() {
     return {
       x: Math.random() * W,
       y: y !== null ? y : Math.random() * H,
-      r: Math.random() * 1.4 + 0.3,
-      dx: (Math.random() - 0.5) * 0.3,
-      dy: -(Math.random() * 0.45 + 0.1),
-      opacity: Math.random() * 0.55 + 0.1,
-      color: Math.random() > 0.6 ? '0,194,255' : Math.random() > 0.5 ? '122,95,255' : '0,255,209'
+      r: Math.random() * 1.5 + 0.4,
+      dx: (Math.random() - 0.5) * 0.35,
+      dy: -(Math.random() * 0.45 + 0.15),
+      opacity: Math.random() * 0.45 + 0.25, // increased opacity for light theme contrast
+      color: Math.random() > 0.6 ? '37,99,235' : Math.random() > 0.3 ? '124,58,237' : '13,148,136' // Blue, Violet, Teal (slate-matching palette)
     };
   }
 
@@ -296,7 +296,7 @@ export function initParticles() {
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < 95) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,194,255,${0.06 * (1 - d / 95)})`;
+          ctx.strokeStyle = `rgba(37,99,235,${0.12 * (1 - d / 95)})`; // Increased opacity connection line for light mode
           ctx.lineWidth = 0.5;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);

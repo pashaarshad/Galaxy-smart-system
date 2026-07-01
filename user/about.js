@@ -25,7 +25,7 @@ export function initAbout() {
         <div class="about-visual reveal-left">
           <div class="about-img-box">
             <div class="about-img-orbit"><div class="orbit-dot"></div></div>
-            <div class="float-anim" style="font-size:5.5rem;z-index:1;position:relative;">🌌</div>
+            <img src="./assets/images/about-visual.png" alt="Galaxy Smart System Core" class="float-anim" style="width:75%;height:75%;object-fit:contain;z-index:1;position:relative;filter:drop-shadow(0 15px 35px rgba(37,99,235,0.15));">
           </div>
           <div class="about-float-badge glow-animated">
             <div class="number">${ABOUT_DATA.yearsActive}</div>
