@@ -8,12 +8,43 @@ import { watchProjects } from '../firebase/firestore.js';
 
 let projectsList = [];
 
+const FALLBACK_PROJECT_IMAGES = [
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80', // Analytics Dashboard
+  'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80', // Mobile Banking App
+  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80', // Web Development Platform
+  'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80', // Cybersecurity Dashboard
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80', // Cloud Infrastructure Network
+  'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80'  // General SaaS Web App
+];
+
+function getProjectImage(p, idx) {
+  if (p.image && (p.image.startsWith('http') || p.image.startsWith('.') || p.image.startsWith('/'))) {
+    return p.image;
+  }
+  
+  const titleLower = (p.title || '').toLowerCase();
+  if (titleLower.includes('dashboard') || titleLower.includes('analytics') || titleLower.includes('data')) {
+    return FALLBACK_PROJECT_IMAGES[0];
+  } else if (titleLower.includes('mobile') || titleLower.includes('app') || titleLower.includes('bank')) {
+    return FALLBACK_PROJECT_IMAGES[1];
+  } else if (titleLower.includes('web') || titleLower.includes('platform') || titleLower.includes('site')) {
+    return FALLBACK_PROJECT_IMAGES[2];
+  } else if (titleLower.includes('cyber') || titleLower.includes('security') || titleLower.includes('auth')) {
+    return FALLBACK_PROJECT_IMAGES[3];
+  } else if (titleLower.includes('cloud') || titleLower.includes('aws') || titleLower.includes('devops')) {
+    return FALLBACK_PROJECT_IMAGES[4];
+  }
+  
+  return FALLBACK_PROJECT_IMAGES[idx % FALLBACK_PROJECT_IMAGES.length];
+}
+
 function buildCard(p, idx) {
   const tags = (p.techStack || p.tech || []).map(t => `<span class="project-tag">${t}</span>`).join('');
+  const imgUrl = getProjectImage(p, idx);
   return `
     <div class="project-card reveal" style="--delay:${(idx % 3) * 0.15}s">
       <div class="project-img">
-        <div class="project-img-inner">${p.image ? `<img src="${p.image}" alt="${p.title}" loading="lazy">` : (p.emoji || '🚀')}</div>
+        <div class="project-img-inner"><img src="${imgUrl}" alt="${p.title}" loading="lazy"></div>
         <div class="project-overlay">
           <div class="project-overlay-text">View Details →</div>
         </div>
