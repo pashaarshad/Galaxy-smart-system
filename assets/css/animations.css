@@ -1,0 +1,326 @@
+/* =============================================
+   GALAXY SMART SYSTEM – ANIMATIONS CSS v2
+   ============================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(2);
+        opacity: 0.4;
+    }
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(0, 194, 255, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 35px rgba(0, 194, 255, 0.7), 0 0 70px rgba(122, 95, 255, 0.4);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-14px) rotate(1deg);
+    }
+
+    66% {
+        transform: translateY(-7px) rotate(-1deg);
+    }
+}
+
+@keyframes tech-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scroll-line {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+
+    40% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    60% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(50px) scale(0.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes toast-out {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(50px) scale(0.85);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.93);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes orbit-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ─── Scroll Reveal Classes ────────────────── */
+/* Fallback: if JS can't add .visible, CSS animation shows elements after 2s */
+@keyframes reveal-fallback {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    /* CSS fallback: animate in after 2s delay if JS doesn't apply .visible */
+    animation: reveal-fallback 0.8s cubic-bezier(0.4, 0, 0.2, 1) 2s forwards;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
+    /* cancel fallback once JS kicks in */
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.delay-5 {
+    transition-delay: 0.5s;
+}
+
+.delay-6 {
+    transition-delay: 0.6s;
+}
+
+/* Hero entrance */
+.hero-content {
+    animation: slideUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.15s;
+}
+
+/* Glow */
+.glow-animated {
+    animation: glow-pulse 3.5s ease-in-out infinite;
+}
+
+/* Float */
+.float-anim {
+    animation: float 5s ease-in-out infinite;
+}

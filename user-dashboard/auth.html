@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#060B18">
+    <title>Login / Register – Galaxy Smart System</title>
+    <meta name="description"
+        content="Login or create your Galaxy Smart System account to place orders and track projects.">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="./auth.css">
+    <link rel="stylesheet" href="../assets/css/mobile-native.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+</head>
+
+<body>
+    <div class="auth-bg"></div>
+    <div class="auth-grid"></div>
+
+    <div class="auth-wrapper">
+        <a href="../index.html" class="auth-back">← Back to Home</a>
+
+        <div class="auth-card">
+            <!-- Logo -->
+            <a href="../index.html" class="auth-logo">
+                <div class="auth-logo-icon">🌌</div>
+                <span class="auth-logo-text">Galaxy Smart System</span>
+            </a>
+
+            <!-- Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+                <button class="auth-tab" id="tab-register" onclick="switchTab('register')">Sign Up</button>
+            </div>
+
+            <!-- ─── LOGIN PANEL ─── -->
+            <div class="auth-panel active" id="panel-login">
+                <h2>Welcome back 👋</h2>
+                <p class="subtitle">Sign in to your account to manage orders and track projects.</p>
+
+                <div class="auth-alert" id="login-alert"></div>
+
+                <form id="login-form" novalidate>
+                    <div class="auth-form-group" id="lg-email-grp">
+                        <label>Email Address</label>
+                        <input type="email" id="lg-email" placeholder="you@example.com" autocomplete="email">
+                        <span class="err-msg">Please enter a valid email.</span>
+                    </div>
+                    <div class="auth-form-group" id="lg-pass-grp">
+                        <label>Password</label>
+                        <input type="password" id="lg-pass" placeholder="Enter your password"
+                            autocomplete="current-password">
+                        <span class="err-msg">Password is required.</span>
+                    </div>
+                    <div class="auth-forgot">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button class="auth-btn" type="submit" id="login-btn">
+                        🔐 Sign In
+                    </button>
+                </form>
+
+                <div class="auth-divider">or continue with</div>
+                <div class="auth-social">
+                    <button class="auth-social-btn" onclick="socialLogin('Google')">🌐 Google</button>
+                    <button class="auth-social-btn" onclick="socialLogin('GitHub')">💻 GitHub</button>
+                </div>
+
+                <div class="auth-alt">
+                    Don't have an account? <a onclick="switchTab('register')">Create one →</a>
+                </div>
+            </div>
+
+            <!-- ─── REGISTER PANEL ─── -->
+            <div class="auth-panel" id="panel-register">
+                <h2>Create Account ✨</h2>
+                <p class="subtitle">Join Galaxy Smart System. Get started with your first project today.</p>
+
+                <div class="auth-alert" id="reg-alert"></div>
+
+                <form id="reg-form" novalidate>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                        <div class="auth-form-group" id="rg-fn-grp">
+                            <label>First Name</label>
+                            <input type="text" id="rg-fn" placeholder="John" autocomplete="given-name">
+                            <span class="err-msg">Required.</span>
+                        </div>
+                        <div class="auth-form-group" id="rg-ln-grp">
+                            <label>Last Name</label>
+                            <input type="text" id="rg-ln" placeholder="Doe" autocomplete="family-name">
+                            <span class="err-msg">Required.</span>
+                        </div>
+                    </div>
+                    <div class="auth-form-group" id="rg-email-grp">
+                        <label>Email Address</label>
+                        <input type="email" id="rg-email" placeholder="you@example.com" autocomplete="email">
+                        <span class="err-msg">Please enter a valid email.</span>
+                    </div>
+                    <div class="auth-form-group" id="rg-phone-grp">
+                        <label>Phone Number</label>
+                        <input type="tel" id="rg-phone" placeholder="+91 98765 43210" autocomplete="tel">
+                        <span class="err-msg">Required.</span>
+                    </div>
+                    <div class="auth-form-group" id="rg-pass-grp">
+                        <label>Password</label>
+                        <input type="password" id="rg-pass" placeholder="Min 8 characters" autocomplete="new-password">
+                        <div class="pw-strength" id="pw-strength">
+                            <div class="pw-strength-bar">
+                                <div class="pw-strength-fill" id="pw-fill"></div>
+                            </div>
+                            <div class="pw-strength-label" id="pw-label">Weak</div>
+                        </div>
+                        <span class="err-msg">Min 8 characters required.</span>
+                    </div>
+                    <div class="auth-form-group" id="rg-confirm-grp">
+                        <label>Confirm Password</label>
+                        <input type="password" id="rg-confirm" placeholder="Repeat your password"
+                            autocomplete="new-password">
+                        <span class="err-msg">Passwords do not match.</span>
+                    </div>
+
+                    <button class="auth-btn" type="submit" id="reg-btn">
+                        🚀 Create Account
+                    </button>
+                </form>
+
+                <div class="auth-alt">
+                    Already have an account? <a onclick="switchTab('login')">Sign in →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer note -->
+        <div style="text-align:center;margin-top:20px;font-size:.75rem;color:#5A677D;">
+            By continuing, you agree to Galaxy Smart System's <a href="#"
+                style="color:#00C2FF;text-decoration:none;">Terms</a> and <a href="#"
+                style="color:#00C2FF;text-decoration:none;">Privacy Policy</a>.
+        </div>
+    </div>
+
+    <script type="module" src="./auth.js"></script>
+</body>
+
+</html>

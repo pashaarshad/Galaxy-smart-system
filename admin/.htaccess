@@ -1,0 +1,10 @@
+DirectoryIndex index.html admin.html
+Options -Indexes +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /admin/
+
+# /admin/ -> index.html (login)
+RewriteRule ^$ index.html [L]
+</IfModule>

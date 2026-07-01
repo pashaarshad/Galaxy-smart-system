@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Panel – Galaxy Smart System</title>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/mobile-native.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="admin-body">
+
+    <div id="admin-login-page" class="admin-login-wrapper">
+        <div class="admin-login-box">
+
+            <div class="admin-login-logo">
+                <div class="admin-login-logo-icon">🔐</div>
+                <span>Galaxy Smart System</span>
+            </div>
+
+            <h1 class="admin-login-title">Admin Panel</h1>
+            <p class="admin-login-sub">Authorized personnel only. Enter your credentials to continue.</p>
+
+            <div class="admin-error-msg" id="login-error">
+                Invalid email or password
+            </div>
+
+            <div class="admin-form-group">
+                <label for="admin-username">Email</label>
+                <input type="text" id="admin-username" placeholder="admin@example.com" autocomplete="username">
+            </div>
+
+            <div class="admin-form-group">
+                <label for="admin-password">Password</label>
+                <input type="password" id="admin-password" placeholder="••••••••" autocomplete="current-password">
+            </div>
+
+            <button class="admin-btn" id="login-btn">
+                <span id="login-btn-text">Login</span>
+                <span id="login-spinner" class="spinner hidden"></span>
+            </button>
+
+        </div>
+    </div>
+
+    <script type="module" src="./admin.js"></script>
+</body>
+
+</html>

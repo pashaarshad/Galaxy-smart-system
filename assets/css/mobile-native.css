@@ -1,0 +1,988 @@
+/**
+ * GALAXY SMART SYSTEM – mobile-native.css
+ * Mobile-only native app UI (desktop unchanged)
+ */
+
+/* Hidden on desktop */
+.mob-app-extras,
+.mob-tabbar,
+.mob-header-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    :root {
+        --mob-tab-h: 64px;
+        --mob-header-h: 56px;
+        --mob-radius: 20px;
+        --mob-pad: 16px;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        padding-bottom: calc(var(--mob-tab-h) + env(safe-area-inset-bottom, 0px));
+        -webkit-tap-highlight-color: transparent;
+        overscroll-behavior-y: contain;
+    }
+
+    body.mob-app-mode {
+        background: #060B18;
+    }
+
+    /* ── Hide desktop-only chrome ── */
+    .hamburger,
+    .nav-mobile,
+    #back-to-top,
+    .hero-scroll-hint,
+    #scroll-progress {
+        display: none !important;
+    }
+
+    /* ── App header ── */
+    #navbar {
+        height: var(--mob-header-h);
+        padding: 0 max(16px, env(safe-area-inset-left)) 0 max(16px, env(safe-area-inset-right));
+        padding-top: env(safe-area-inset-top, 0px);
+        background: rgba(6, 11, 24, 0.92) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    #navbar.scrolled {
+        height: var(--mob-header-h);
+    }
+
+    .nav-logo span {
+        font-size: 0.95rem;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .nav-logo-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+    }
+
+    .mob-header-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: rgba(0, 194, 255, 0.1);
+        border: 1px solid rgba(0, 194, 255, 0.2);
+        font-size: 1.1rem;
+        text-decoration: none;
+        flex-shrink: 0;
+    }
+
+    .mob-header-btn:active {
+        transform: scale(0.94);
+    }
+
+    /* ── Hero — app welcome screen ── */
+    #hero {
+        min-height: auto;
+        align-items: flex-start;
+        padding-top: calc(var(--mob-header-h) + env(safe-area-inset-top, 0px) + 20px);
+        padding-bottom: 8px;
+    }
+
+    .hero-content {
+        text-align: left;
+        max-width: 100%;
+        width: 100%;
+        padding: 0 var(--mob-pad);
+    }
+
+    .hero-badge {
+        font-size: 0.65rem;
+        padding: 6px 14px 6px 8px;
+        margin-bottom: 18px;
+        letter-spacing: 1.2px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.85rem, 8vw, 2.4rem) !important;
+        line-height: 1.15;
+        text-align: left;
+        margin-bottom: 12px;
+    }
+
+    .hero-title .line2 {
+        display: block;
+        background: linear-gradient(135deg, #00C2FF, #7A5FFF);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-tagline {
+        font-size: 0.95rem !important;
+        text-align: left;
+        margin-bottom: 22px;
+        min-height: 1.5em;
+        color: #9AA5BE;
+    }
+
+    .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hero-ctas .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 20px;
+        border-radius: 14px;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    .hero-ctas .btn-primary {
+        box-shadow: 0 8px 28px rgba(0, 194, 255, 0.35);
+    }
+
+    .hero-orb-1,
+    .hero-orb-2,
+    .hero-orb-3 {
+        opacity: 0.5;
+        transform: scale(0.6);
+    }
+
+    /* ── Mobile app extras ── */
+    .mob-app-extras {
+        display: block;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .mob-stat-strip {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 4px 0 14px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .mob-stat-strip::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mob-stat-pill {
+        flex: 0 0 auto;
+        min-width: 88px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .mob-stat-pill span {
+        font-size: 1.1rem;
+    }
+
+    .mob-stat-pill strong {
+        font-size: 1.05rem;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .mob-stat-pill small {
+        font-size: 0.65rem;
+        color: #7A8499;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .mob-quick-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .mob-quick-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 6px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        text-decoration: none;
+        color: #C8D0E0;
+        font-size: 0.68rem;
+        font-weight: 600;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    .mob-quick-item:active {
+        transform: scale(0.96);
+        background: rgba(0, 194, 255, 0.12);
+    }
+
+    .mob-quick-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(0, 194, 255, 0.2), rgba(122, 95, 255, 0.2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+    }
+
+    /* ── Section cards (app feed style) ── */
+    .section-divider {
+        display: none;
+    }
+
+    #about,
+    #team,
+    #services,
+    #tech,
+    #projects,
+    #stats,
+    #project-status,
+    #contact {
+        margin: 0 var(--mob-pad) 14px;
+        padding: 28px 0 !important;
+        border-radius: var(--mob-radius);
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+
+    #hero {
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    #stats {
+        padding: 28px 0 !important;
+    }
+
+    #stats .container,
+    #about .container,
+    #team .container,
+    #services .container,
+    #tech .container,
+    #projects .container,
+    #project-status .container,
+    #contact .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .section-header {
+        text-align: left !important;
+        margin-bottom: 24px;
+    }
+
+    .section-title {
+        font-size: 1.45rem !important;
+    }
+
+    .section-desc {
+        font-size: 0.88rem;
+    }
+
+    /* Stats horizontal scroll on mobile */
+    .stats-grid {
+        display: flex !important;
+        overflow-x: auto;
+        gap: 12px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .stats-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .stat-card {
+        flex: 0 0 140px;
+        min-width: 140px;
+        border-radius: 16px;
+    }
+
+    /* Cards touch-friendly */
+    .service-card,
+    .project-card,
+    .team-card,
+    .tech-card {
+        border-radius: 18px !important;
+    }
+
+    .btn,
+    .pstatus-tab,
+    .pstatus-viewmore {
+        min-height: 44px;
+    }
+
+    /* Footer compact */
+    footer {
+        margin: 0 var(--mob-pad) calc(var(--mob-tab-h) + 8px);
+        border-radius: var(--mob-radius);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 28px 0 20px;
+    }
+
+    footer .footer-grid {
+        gap: 24px;
+    }
+
+    footer .footer-col:nth-child(n+3) {
+        display: none;
+    }
+
+    /* ── Bottom tab bar ── */
+    .mob-tabbar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1100;
+        height: calc(var(--mob-tab-h) + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: rgba(8, 12, 26, 0.96);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .mob-tab {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        text-decoration: none;
+        color: #6B7589;
+        font-size: 0.62rem;
+        font-weight: 600;
+        padding: 8px 4px;
+        transition: color 0.2s;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .mob-tab-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+        transition: transform 0.2s;
+    }
+
+    .mob-tab.active {
+        color: #00C2FF;
+    }
+
+    .mob-tab.active .mob-tab-icon {
+        transform: scale(1.1);
+    }
+
+    .mob-tab:active {
+        opacity: 0.7;
+    }
+
+    .mob-tab-label {
+        letter-spacing: 0.2px;
+    }
+
+    /* Team / services horizontal snap */
+    .team-grid,
+    .services-grid {
+        display: flex !important;
+        overflow-x: auto;
+        gap: 14px;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .team-grid::-webkit-scrollbar,
+    .services-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .team-card,
+    .service-card {
+        flex: 0 0 78%;
+        max-width: 280px;
+        scroll-snap-align: start;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .tech-slider-wrap {
+        padding: 0 4px;
+    }
+
+    .tech-card {
+        min-width: 160px;
+    }
+
+    /* Project status tabs — pill scroll */
+    .pstatus-tabs {
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 6px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pstatus-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pstatus-tab {
+        flex-shrink: 0;
+        border-radius: 999px;
+        padding: 10px 18px;
+    }
+
+    .pstatus-card {
+        border-radius: 16px;
+    }
+
+    /* Contact form — app style */
+    #contact .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    #contact input,
+    #contact textarea,
+    #contact select {
+        min-height: 48px;
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    #contact textarea {
+        min-height: 120px;
+    }
+
+    #contact .btn {
+        width: 100%;
+        border-radius: 14px;
+        padding: 16px;
+    }
+
+    /* About cards */
+    .about-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px;
+    }
+
+    .about-card {
+        border-radius: 16px;
+        padding: 18px 14px;
+    }
+
+    /* Modal → bottom sheet */
+    .proj-modal-overlay.open {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .proj-modal-overlay.open .proj-modal-box {
+        width: 100%;
+        max-width: 100%;
+        max-height: 88vh;
+        border-radius: 24px 24px 0 0;
+        margin: 0;
+        animation: mobSheetUp 0.32s ease;
+    }
+
+    @keyframes mobSheetUp {
+        from { transform: translateY(100%); }
+        to { transform: translateY(0); }
+    }
+
+    /* Toast above tab bar */
+    #toast-container,
+    .toast-container {
+        bottom: calc(var(--mob-tab-h) + 16px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mob-quick-grid {
+        gap: 8px;
+    }
+
+    .mob-quick-item {
+        padding: 12px 4px;
+        font-size: 0.62rem;
+    }
+
+    .mob-quick-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+/* Desktop: ensure mobile elements stay hidden */
+@media (min-width: 769px) {
+    .mob-app-extras,
+    .mob-tabbar,
+    .mob-header-btn,
+    .mob-admin-tabbar,
+    .mob-dash-tabbar,
+    .mob-dash-sheet,
+    .mob-sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   ADMIN PANEL — Mobile Native App
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    body.mob-admin-app,
+    body.mob-admin-login-app {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body.mob-admin-app {
+        padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Login pages */
+    body.mob-admin-login-app .admin-login-wrapper {
+        padding: max(20px, env(safe-area-inset-top)) 16px 24px;
+        min-height: 100dvh;
+        align-items: flex-start;
+        padding-top: max(48px, env(safe-area-inset-top));
+    }
+
+    body.mob-admin-login-app .admin-login-box {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 24px;
+        padding: 28px 22px;
+    }
+
+    body.mob-admin-login-app .admin-btn {
+        width: 100%;
+        padding: 16px;
+        border-radius: 14px;
+        font-size: 1rem;
+    }
+
+    /* Admin shell */
+    body.mob-admin-app .admin-shell-topbar {
+        padding: 12px 16px;
+        padding-top: max(12px, env(safe-area-inset-top));
+        min-height: 56px;
+    }
+
+    body.mob-admin-app .admin-shell-topbar h1 {
+        font-size: 1.05rem;
+    }
+
+    body.mob-admin-app .admin-shell-topbar p {
+        display: none;
+    }
+
+    body.mob-admin-app .admin-shell-hamburger {
+        display: none !important;
+    }
+
+    body.mob-admin-app .admin-shell-topbar-right .saas-btn-ghost {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    body.mob-admin-app .admin-shell-content {
+        padding: 14px 12px 20px;
+    }
+
+    body.mob-admin-app .admin-shell-sidebar {
+        z-index: 1200;
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.5);
+    }
+
+    body.mob-admin-app .card,
+    body.mob-admin-app .users-stat,
+    body.mob-admin-app .glass-card {
+        border-radius: 18px;
+    }
+
+    body.mob-admin-app .users-stats,
+    body.mob-admin-app .users-toolbar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    body.mob-admin-app .users-stats::-webkit-scrollbar,
+    body.mob-admin-app .users-toolbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    body.mob-admin-app .users-stat {
+        min-width: 120px;
+        flex-shrink: 0;
+    }
+
+    body.mob-admin-app .table,
+    body.mob-admin-app .users-table {
+        font-size: 0.82rem;
+    }
+
+    body.mob-admin-app .users-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.mob-admin-app .users-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    body.mob-admin-app .users-heading h1 {
+        font-size: 1.35rem;
+    }
+
+    body.mob-admin-app .modal .card,
+    body.mob-admin-app .users-modal-box {
+        max-width: calc(100vw - 24px);
+        margin: 12px;
+        border-radius: 20px;
+    }
+
+    body.mob-admin-app .btn,
+    body.mob-admin-app .saas-btn {
+        min-height: 44px;
+    }
+
+    .mob-admin-tabbar {
+        display: flex;
+    }
+
+    .mob-tab-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    /* Sidebar overlay */
+    .mob-sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1150;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    .mob-sidebar-overlay.show {
+        display: block;
+    }
+
+    body.mob-admin-app .admin-shell-sidebar.open {
+        transform: translateX(0);
+    }
+
+    body.mob-admin-app .grid-two,
+    body.mob-admin-app .form-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.mob-admin-app .saas-page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    body.mob-admin-app .saas-page-header .saas-btn {
+        width: 100%;
+    }
+
+    body.mob-admin-app .team-editor,
+    body.mob-admin-app .team-list {
+        flex-direction: column;
+    }
+
+    body.mob-admin-app .messages-list .message-card {
+        border-radius: 16px;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   USER DASHBOARD — Mobile Native App
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    body.mob-dash-app {
+        padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body.mob-dash-app #topbar {
+        padding: 12px 16px;
+        padding-top: max(12px, env(safe-area-inset-top));
+        min-height: 56px;
+        background: rgba(6, 11, 24, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    body.mob-dash-app #sidebar-toggle {
+        display: none !important;
+    }
+
+    body.mob-dash-app .topbar-title {
+        font-size: 1.05rem;
+    }
+
+    body.mob-dash-app .panel-area {
+        padding: 14px 12px 20px;
+    }
+
+    body.mob-dash-app .d-section,
+    body.mob-dash-app .dash-premium-card,
+    body.mob-dash-app .summary-card {
+        border-radius: 18px;
+    }
+
+    body.mob-dash-app .summary-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    body.mob-dash-app .summary-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    body.mob-dash-app .summary-card {
+        min-width: 140px;
+        flex-shrink: 0;
+    }
+
+    body.mob-dash-app .d-btn {
+        min-height: 44px;
+        border-radius: 12px;
+    }
+
+    body.mob-dash-app #dashboard-sidebar {
+        z-index: 1200;
+    }
+
+    .mob-dash-tabbar {
+        display: flex;
+    }
+
+    /* Hide desktop sidebar on mobile — use bottom nav + sheet */
+    body.mob-dash-app #dashboard-sidebar {
+        display: none;
+    }
+
+    body.mob-dash-app #dashboard-main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    body.mob-dash-app .orders-table-wrap,
+    body.mob-dash-app .d-table-wrap,
+    body.mob-dash-app table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body.mob-dash-app .order-card,
+    body.mob-dash-app .timeline-item {
+        border-radius: 16px;
+    }
+
+    body.mob-dash-app .d-form-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.mob-dash-app #d-toast-container {
+        bottom: calc(64px + 16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Bottom sheet menu */
+    .mob-dash-sheet {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1300;
+        pointer-events: none;
+    }
+
+    .mob-dash-sheet.open {
+        display: block;
+        pointer-events: auto;
+    }
+
+    .mob-dash-sheet-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+    }
+
+    .mob-dash-sheet-panel {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 12px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+        background: #0C1224;
+        border-radius: 24px 24px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        animation: mobSheetUp 0.3s ease;
+    }
+
+    .mob-dash-sheet-handle {
+        width: 40px;
+        height: 4px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 0 auto 16px;
+    }
+
+    .mob-dash-sheet-title {
+        font-size: 1rem;
+        color: #9AA5BE;
+        margin: 0 0 14px;
+        font-weight: 600;
+    }
+
+    .mob-dash-sheet-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .mob-dash-sheet-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 16px 8px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        color: #C8D0E0;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        font-family: inherit;
+    }
+
+    .mob-dash-sheet-item span {
+        font-size: 1.4rem;
+    }
+
+    .mob-dash-sheet-item:active {
+        transform: scale(0.96);
+        background: rgba(0, 194, 255, 0.1);
+    }
+
+    .mob-dash-sheet-danger {
+        color: #FF6B6B;
+        border-color: rgba(255, 75, 75, 0.2);
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   AUTH PAGE — Mobile Native App
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    body.mob-auth-app {
+        min-height: 100dvh;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body.mob-auth-app .auth-wrapper {
+        padding: max(16px, env(safe-area-inset-top)) 16px 24px;
+        min-height: 100dvh;
+        justify-content: flex-start;
+        padding-top: max(24px, env(safe-area-inset-top));
+    }
+
+    body.mob-auth-app .auth-card {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 24px;
+        padding: 28px 20px;
+    }
+
+    body.mob-auth-app .auth-tabs {
+        border-radius: 14px;
+        padding: 4px;
+    }
+
+    body.mob-auth-app .auth-tab {
+        padding: 12px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+
+    body.mob-auth-app input,
+    body.mob-auth-app .auth-submit {
+        min-height: 48px;
+        border-radius: 12px;
+        font-size: 1rem;
+    }
+
+    body.mob-auth-app .auth-submit {
+        width: 100%;
+    }
+}
+

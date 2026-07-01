@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#060B18">
+    <title>My Dashboard – Galaxy Smart System</title>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="../assets/css/mobile-native.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+</head>
+
+<body>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div id="sidebar-overlay"></div>
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside id="dashboard-sidebar">
+        <a href="../index.html" class="sidebar-logo">
+            <div class="sidebar-logo-icon">🌌</div>
+            <div class="sidebar-logo-text">Galaxy Smart System</div>
+        </a>
+
+        <!-- User card -->
+        <div class="sidebar-user">
+            <div class="user-avatar" id="sb-avatar">U</div>
+            <div class="user-info">
+                <div class="user-name" id="sb-name">Loading...</div>
+                <div class="user-email" id="sb-email">user@example.com</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main</div>
+            <button class="nav-link active" data-panel="home">
+                <span class="icon">🏠</span><span>Dashboard</span>
+            </button>
+            <button class="nav-link" data-panel="place-order">
+                <span class="icon">➕</span><span>Place Order</span>
+                <span class="badge">New</span>
+            </button>
+            <button class="nav-link" data-panel="orders">
+                <span class="icon">📦</span><span>My Orders</span>
+            </button>
+            <button class="nav-link" data-panel="tracking">
+                <span class="icon">🛰</span><span>Order Tracking</span>
+            </button>
+
+            <div class="sidebar-section-label">Finance</div>
+            <button class="nav-link" data-panel="payments">
+                <span class="icon">💳</span><span>Payment History</span>
+            </button>
+            <button class="nav-link" data-panel="invoices">
+                <span class="icon">🧾</span><span>Invoices</span>
+            </button>
+
+            <div class="sidebar-section-label">Account</div>
+            <button class="nav-link" data-panel="profile">
+                <span class="icon">👤</span><span>My Profile</span>
+            </button>
+            <button class="nav-link" data-panel="support">
+                <span class="icon">💬</span><span>Support</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html" class="nav-link">
+                <span class="icon">🌐</span><span>Visit Website</span>
+            </a>
+            <button class="nav-link logout" id="logout-btn">
+                <span class="icon" style="background:rgba(255,75,75,0.12);">🚪</span><span>Sign Out</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <main id="dashboard-main">
+
+        <!-- Topbar -->
+        <header id="topbar">
+            <div style="display:flex;align-items:center;gap:14px;">
+                <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+                <h1 class="topbar-title" id="topbar-title">Dashboard</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="topbar-icon-btn" title="Notifications" id="notif-btn">
+                    🔔 <span class="notif-dot" id="notif-dot"></span>
+                </button>
+                <button class="topbar-icon-btn" data-panel="profile" title="Profile">😊</button>
+            </div>
+        </header>
+
+        <!-- Panel Area -->
+        <div class="panel-area">
+
+            <!-- ══════════════════════════
+           PANEL: HOME (Dashboard)
+      ══════════════════════════ -->
+            <div class="d-panel active" id="panel-home"></div>
+
+            <!-- ══════════════════════════
+           PANEL: PLACE ORDER
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-place-order"></div>
+
+            <!-- ══════════════════════════
+           PANEL: MY ORDERS
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-orders"></div>
+
+            <!-- ══════════════════════════
+           PANEL: TRACKING
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-tracking"></div>
+
+            <!-- ══════════════════════════
+           PANEL: PAYMENTS
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-payments"></div>
+
+            <!-- ══════════════════════════
+           PANEL: INVOICES
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-invoices"></div>
+
+            <!-- ══════════════════════════
+           PANEL: PROFILE
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-profile"></div>
+
+            <!-- ══════════════════════════
+           PANEL: SUPPORT
+      ══════════════════════════ -->
+            <div class="d-panel" id="panel-support"></div>
+
+        </div><!-- /panel-area -->
+    </main>
+
+    <!-- Toast container -->
+    <div id="d-toast-container"></div>
+
+    <!-- Mobile bottom tab bar -->
+    <nav class="mob-tabbar mob-dash-tabbar" id="mob-dash-tabbar" aria-label="Dashboard navigation" style="display:none;">
+        <button type="button" class="mob-tab active" data-panel="home">
+            <span class="mob-tab-icon">🏠</span><span class="mob-tab-label">Home</span>
+        </button>
+        <button type="button" class="mob-tab" data-panel="place-order">
+            <span class="mob-tab-icon">➕</span><span class="mob-tab-label">Order</span>
+        </button>
+        <button type="button" class="mob-tab" data-panel="orders">
+            <span class="mob-tab-icon">📦</span><span class="mob-tab-label">Orders</span>
+        </button>
+        <button type="button" class="mob-tab" data-panel="tracking">
+            <span class="mob-tab-icon">🛰</span><span class="mob-tab-label">Track</span>
+        </button>
+        <button type="button" class="mob-tab" data-panel="more">
+            <span class="mob-tab-icon">☰</span><span class="mob-tab-label">More</span>
+        </button>
+    </nav>
+
+    <!-- Mobile more menu (bottom sheet) -->
+    <div class="mob-dash-sheet" id="mob-dash-sheet" aria-hidden="true">
+        <div class="mob-dash-sheet-backdrop" id="mob-dash-sheet-close"></div>
+        <div class="mob-dash-sheet-panel">
+            <div class="mob-dash-sheet-handle"></div>
+            <h3 class="mob-dash-sheet-title">Menu</h3>
+            <div class="mob-dash-sheet-grid">
+                <button type="button" class="mob-dash-sheet-item" data-panel="profile">
+                    <span>👤</span><small>Profile</small>
+                </button>
+                <button type="button" class="mob-dash-sheet-item" data-panel="payments">
+                    <span>💳</span><small>Payments</small>
+                </button>
+                <button type="button" class="mob-dash-sheet-item" data-panel="invoices">
+                    <span>🧾</span><small>Invoices</small>
+                </button>
+                <button type="button" class="mob-dash-sheet-item" data-panel="support">
+                    <span>💬</span><small>Support</small>
+                </button>
+                <a href="../index.html" class="mob-dash-sheet-item">
+                    <span>🌐</span><small>Website</small>
+                </a>
+                <button type="button" class="mob-dash-sheet-item mob-dash-sheet-danger" id="mob-dash-logout">
+                    <span>🚪</span><small>Sign Out</small>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./dashboard.js"></script>
+</body>
+
+</html>

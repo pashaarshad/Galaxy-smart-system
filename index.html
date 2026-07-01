@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#060B18">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description"
+        content="Galaxy Smart System – Premium technology company delivering world-class web, mobile, AI, and cloud solutions. Global standard. Future-ready.">
+    <meta name="keywords"
+        content="Galaxy Smart System, web development, mobile apps, AI, cloud, cybersecurity, tech company">
+    <meta name="author" content="Galaxy Smart System">
+    <meta property="og:title" content="Galaxy Smart System – Premium Tech Solutions">
+    <meta property="og:description"
+        content="Building Future Technology. Premium digital solutions for forward-thinking businesses worldwide.">
+    <meta property="og:type" content="website">
+    <title>Galaxy Smart System – Premium Tech Solutions</title>
+
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/animations.css">
+    <link rel="stylesheet" href="./assets/css/mobile-native.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+</head>
+
+<body>
+
+    <!-- ═══ CUSTOM CURSOR ═══ -->
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ═══ PRELOADER ═══ -->
+    <div id="preloader" aria-hidden="true">
+        <div class="preloader-logo">🌌 Galaxy Smart System</div>
+        <div class="preloader-bar-wrap">
+            <div class="preloader-bar" id="preloader-bar"></div>
+        </div>
+        <div class="preloader-text" id="preloader-text">Initializing...</div>
+    </div>
+    <!-- Preloader fallback: auto-hide after 2.5s even if module JS fails -->
+    <script>
+        (function () {
+            var bar = document.getElementById('preloader-bar');
+            var txt = document.getElementById('preloader-text');
+            var pre = document.getElementById('preloader');
+            if (!pre) return;
+            var steps = ['Loading styles...', 'Rendering sections...', 'Almost ready...', 'Done!'];
+            var pct = 0; var si = 0;
+            var iv = setInterval(function () {
+                pct = Math.min(pct + 4, 100);
+                if (bar) bar.style.width = pct + '%';
+                if (txt && si < steps.length) txt.textContent = steps[Math.floor(si++ / (100 / steps.length))] || 'Done!';
+                if (pct >= 100) {
+                    clearInterval(iv);
+                    setTimeout(function () {
+                        pre.style.opacity = '0';
+                        pre.style.visibility = 'hidden';
+                        pre.style.pointerEvents = 'none';
+                    }, 300);
+                }
+            }, 25);
+        })();
+    </script>
+
+
+    <!-- ═══ SCROLL PROGRESS ═══ -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════ -->
+    <nav id="navbar" role="navigation" aria-label="Main Navigation">
+        <a href="#hero" class="nav-logo" id="nav-logo" aria-label="Galaxy Smart System Home">
+            <div class="nav-logo-icon">🌌</div>
+            <span>Galaxy Smart System</span>
+        </a>
+
+        <ul class="nav-links" role="list">
+            <li><a href="#hero" id="nav-home">Home</a></li>
+            <li><a href="#about" id="nav-about">About</a></li>
+            <li><a href="#team" id="nav-team">Team</a></li>
+            <li><a href="#services" id="nav-services">Services</a></li>
+            <li><a href="#tech" id="nav-tech">Technology</a></li>
+            <li><a href="#projects" id="nav-projects">Projects</a></li>
+            <li><a href="#project-status" id="nav-status">Status</a></li>
+            <li><a href="#contact" id="nav-contact">Contact</a></li>
+        </ul>
+
+        <!-- Auth Buttons (desktop) -->
+        <div class="nav-auth" id="nav-auth">
+            <a href="./user-dashboard/auth.html" class="btn btn-outline btn-sm" id="nav-login">Sign In</a>
+            <a href="./user-dashboard/auth.html" class="btn btn-primary btn-sm" id="nav-register">✨ Get Started</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <a href="./user-dashboard/auth.html" class="mob-header-btn" id="mob-header-account" aria-label="Account">👤</a>
+
+    </nav>
+
+    <!-- Mobile Nav -->
+    <nav class="nav-mobile" id="mobile-nav" aria-label="Mobile Navigation">
+        <a href="#hero">🏠 Home</a>
+        <a href="#about">🌌 About</a>
+        <a href="#team">🧑‍🚀 Team</a>
+        <a href="#services">⚡ Services</a>
+        <a href="#tech">🧩 Technology</a>
+        <a href="#projects">📁 Projects</a>
+        <a href="#project-status">🚀 Status Board</a>
+        <a href="#contact">📨 Contact</a>
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.07);margin:6px 0;">
+        <a href="./user-dashboard/dashboard.html" id="mob-dashboard" style="display:none;">🏠 My Dashboard</a>
+        <a href="./user-dashboard/auth.html" id="mob-login">🔐 Sign In</a>
+        <a href="./user-dashboard/auth.html" id="mob-register" style="color:#00C2FF;font-weight:700;">✨ Get Started
+            Free</a>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="hero" aria-label="Hero">
+        <canvas id="particle-canvas" aria-hidden="true"></canvas>
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+
+        <!-- Background orbs -->
+        <div class="orb hero-orb-1" aria-hidden="true"></div>
+        <div class="orb hero-orb-2" aria-hidden="true"></div>
+        <div class="orb hero-orb-3" aria-hidden="true"></div>
+
+        <!-- Floating mini-cards (desktop only) -->
+        <div class="hero-float-cards" aria-hidden="true">
+            <div class="hero-float-card">
+                <div class="hero-float-icon">🚀</div>
+                <div>
+                    <div style="font-size:.85rem;font-weight:700;color:#fff;">120+ Projects</div>
+                    <div style="font-size:.7rem;color:#9AA5BE;">Successfully Delivered</div>
+                </div>
+            </div>
+            <div class="hero-float-card">
+                <div class="hero-float-icon">🌍</div>
+                <div>
+                    <div style="font-size:.85rem;font-weight:700;color:#fff;">Global Clients</div>
+                    <div style="font-size:.7rem;color:#9AA5BE;">Across 15+ Countries</div>
+                </div>
+            </div>
+            <div class="hero-float-card">
+                <div class="hero-float-icon">⭐</div>
+                <div>
+                    <div style="font-size:.85rem;font-weight:700;color:#fff;">5★ Rating</div>
+                    <div style="font-size:.7rem;color:#9AA5BE;">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-badge-dot"></div>
+                Galaxy Smart System · Est. 2019
+            </div>
+
+            <h1 class="hero-title">
+                We Build<br>
+                <span class="line2">Future Technology</span>
+            </h1>
+
+            <p class="hero-tagline">
+                <span id="hero-typing"></span><span class="typing-cursor" aria-hidden="true"></span>
+            </p>
+
+            <div class="hero-ctas">
+                <a href="#projects" class="btn btn-primary" id="hero-cta-projects">
+                    🚀 Explore Projects
+                </a>
+                <a href="#contact" class="btn btn-outline" id="hero-cta-contact">
+                    💬 Contact Us
+                </a>
+            </div>
+
+            <!-- Mobile app extras (hidden on desktop) -->
+            <div class="mob-app-extras">
+                <div class="mob-stat-strip">
+                    <div class="mob-stat-pill"><span>📁</span><strong>120+</strong><small>Projects</small></div>
+                    <div class="mob-stat-pill"><span>🧩</span><strong>25+</strong><small>Tech</small></div>
+                    <div class="mob-stat-pill"><span>😊</span><strong>80+</strong><small>Clients</small></div>
+                    <div class="mob-stat-pill"><span>🏆</span><strong>5+</strong><small>Years</small></div>
+                </div>
+                <div class="mob-quick-grid">
+                    <a href="#about" class="mob-quick-item"><span class="mob-quick-icon">🌌</span><span>About</span></a>
+                    <a href="#team" class="mob-quick-item"><span class="mob-quick-icon">🧑‍🚀</span><span>Team</span></a>
+                    <a href="#tech" class="mob-quick-item"><span class="mob-quick-icon">⚡</span><span>Tech</span></a>
+                    <a href="#contact" class="mob-quick-item"><span class="mob-quick-icon">📨</span><span>Contact</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-hint" aria-hidden="true">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       ABOUT SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="about" aria-label="About Galaxy Smart System"></section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       TEAM SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="team" aria-label="Our Team"></section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       SERVICES SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="services" aria-label="Our Services"></section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       TECHNOLOGY SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="tech" aria-label="Technology Stack"></section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       PROJECTS SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="projects" aria-label="Featured Projects"></section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       STATS SECTION
+  ═══════════════════════════════════════════ -->
+    <section id="stats" aria-label="Our Statistics">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">By The Numbers</span>
+                <h2 class="section-title">Proven Track Record</h2>
+                <p class="section-desc">Numbers speak louder than words. Here's the scale of our impact across the
+                    globe.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card reveal delay-1">
+                    <span class="stat-icon">📁</span>
+                    <div class="stat-number" data-count="120" data-suffix="+">0+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-card reveal delay-2">
+                    <span class="stat-icon">🧩</span>
+                    <div class="stat-number" data-count="25" data-suffix="+">0+</div>
+                    <div class="stat-label">Technologies Mastered</div>
+                </div>
+                <div class="stat-card reveal delay-3">
+                    <span class="stat-icon">😊</span>
+                    <div class="stat-number" data-count="80" data-suffix="+">0+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-card reveal delay-4">
+                    <span class="stat-icon">🏆</span>
+                    <div class="stat-number" data-count="5" data-suffix="+">0+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       PROJECT STATUS SECTION — rendered by projectStatus.js
+   ═══════════════════════════════════════════ -->
+    <section id="project-status" aria-label="Project Status Board">
+        <!-- JS renders this section via initProjectStatus() in assets/js/main.js -->
+    </section>
+
+
+
+
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════
+       CONTACT SECTION
+   ═══════════════════════════════════════════ -->
+    <section id="contact" aria-label="Contact Us"></section>
+
+    <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-logo">
+                        <div class="nav-logo-icon">🌌</div>
+                        <span>Galaxy Smart System</span>
+                    </a>
+                    <p>Pioneering world-class digital solutions since 2019. Building the future of technology, one
+                        innovation at a time. Global standard. Future-ready.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon" aria-label="GitHub" id="footer-github">💻</a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn" id="footer-linkedin">🔗</a>
+                        <a href="#" class="social-icon" aria-label="Twitter" id="footer-twitter">🐦</a>
+                        <a href="#" class="social-icon" aria-label="Instagram" id="footer-instagram">📸</a>
+                        <a href="#" class="social-icon" aria-label="YouTube" id="footer-youtube">▶️</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#tech">Technology</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">Mobile Apps</a></li>
+                        <li><a href="#services">AI & Automation</a></li>
+                        <li><a href="#services">Cloud Solutions</a></li>
+                        <li><a href="#services">Cybersecurity</a></li>
+                        <li><a href="#services">Data & Analytics</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2024 Galaxy Smart System. All rights reserved.</span>
+                <span>Built with ❤️ & cutting-edge technology</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" role="alert" aria-live="polite"></div>
+
+    <!-- Back To Top -->
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+    <!-- Mobile App Bottom Tab Bar -->
+    <nav class="mob-tabbar" id="mob-tabbar" aria-label="App navigation">
+        <a href="#hero" class="mob-tab active" data-section="hero">
+            <span class="mob-tab-icon">🏠</span>
+            <span class="mob-tab-label">Home</span>
+        </a>
+        <a href="#services" class="mob-tab" data-section="services">
+            <span class="mob-tab-icon">⚡</span>
+            <span class="mob-tab-label">Services</span>
+        </a>
+        <a href="#projects" class="mob-tab" data-section="projects">
+            <span class="mob-tab-icon">📁</span>
+            <span class="mob-tab-label">Projects</span>
+        </a>
+        <a href="#project-status" class="mob-tab" data-section="project-status">
+            <span class="mob-tab-icon">📊</span>
+            <span class="mob-tab-label">Status</span>
+        </a>
+        <a href="./user-dashboard/auth.html" class="mob-tab" id="mob-tab-account" data-section="account">
+            <span class="mob-tab-icon">👤</span>
+            <span class="mob-tab-label">Account</span>
+        </a>
+    </nav>
+
+    <script>
+        // Auth-aware navbar: update buttons based on session
+        (function () {
+            try {
+                const s = JSON.parse(sessionStorage.getItem('gss_session') || '{}');
+                if (s.loggedIn) {
+                    const auth = document.getElementById('nav-auth');
+                    if (auth) auth.innerHTML = `
+            <a href="./user-dashboard/dashboard.html"
+              style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;
+                     background:rgba(0,194,255,0.08);border:1px solid rgba(0,194,255,0.2);
+                     border-radius:10px;font-size:.82rem;font-weight:600;color:#00C2FF;
+                     text-decoration:none;transition:all .3s;">
+              👤 ${s.name?.split(' ')[0] || 'Dashboard'}
+            </a>
+          `;
+                    const mobDash = document.getElementById('mob-dashboard');
+                    const mobLogin = document.getElementById('mob-login');
+                    const mobReg = document.getElementById('mob-register');
+                    if (mobDash) mobDash.style.display = 'flex';
+                    if (mobLogin) mobLogin.style.display = 'none';
+                    if (mobReg) mobReg.style.display = 'none';
+                    const mobHeader = document.getElementById('mob-header-account');
+                    const mobTabAcc = document.getElementById('mob-tab-account');
+                    if (mobHeader) {
+                        mobHeader.href = './user-dashboard/dashboard.html';
+                        mobHeader.title = s.name?.split(' ')[0] || 'Dashboard';
+                    }
+                    if (mobTabAcc) {
+                        mobTabAcc.href = './user-dashboard/dashboard.html';
+                        const lbl = mobTabAcc.querySelector('.mob-tab-label');
+                        const ic = mobTabAcc.querySelector('.mob-tab-icon');
+                        if (lbl) lbl.textContent = 'Dashboard';
+                        if (ic) ic.textContent = '🏠';
+                    }
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <script type="module" src="./assets/js/main.js"></script>
+
+    <!-- ── Tab Filter + Bar Animations (plain script – works on file://) ── -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* ── Project Status Tabs ── */
+            var tabs = document.querySelectorAll('#pstatus-tabs .pstatus-tab');
+            var cards = document.querySelectorAll('#pstatus-grid .pstatus-card');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(function (t) { t.classList.remove('active'); });
+                    tab.classList.add('active');
+                    var filter = tab.dataset.filter;
+                    cards.forEach(function (card) {
+                        if (filter === 'all' || card.dataset.status === filter) {
+                            card.style.display = '';
+                            card.style.animation = 'fadeInUp 0.4s ease forwards';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            /* ── Animate Progress Bars via IntersectionObserver ── */
+            function animateBars(root) {
+                root.querySelectorAll('.pbar-animate').forEach(function (bar) {
+                    var target = parseFloat(bar.dataset.w) || 0;
+                    var current = 0;
+                    function step() {
+                        if (current < target) {
+                            current = Math.min(current + 1.8, target);
+                            bar.style.width = current + '%';
+                            requestAnimationFrame(step);
+                        }
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+/* ── Site-wide scroll-reveal fallback (handles all reveal classes) ── */
+            var allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            if (allReveals.length && window.IntersectionObserver) {
+                var siteRevealObs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            siteRevealObs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+                allReveals.forEach(function (el) { siteRevealObs.observe(el); });
+            }
+        });
+
+    </script>
+
+    <!-- ═══════════════════════════════════════════
+       PROJECT PROGRESS MODAL
+   ═══════════════════════════════════════════ -->
+    <div id="proj-modal-overlay" class="proj-modal-overlay">
+        <div class="proj-modal-box" role="dialog" aria-modal="true">
+            <!-- Header -->
+            <div class="proj-modal-header">
+                <div>
+                    <div id="pm-badge" class="proj-modal-badge"></div>
+                    <h2 id="pm-title" class="proj-modal-title"></h2>
+                    <div id="pm-tech" class="proj-modal-tech"></div>
+                </div>
+                <button type="button" class="proj-modal-close" aria-label="Close">✕</button>
+            </div>
+
+            <!-- Body -->
+            <div class="proj-modal-body">
+                <!-- Left: Donut + Legend -->
+                <div class="pm-donut-col">
+                    <div class="pm-donut-wrap">
+                        <svg id="pm-donut-svg" viewBox="0 0 200 200" width="180" height="180"
+                            style="transform:rotate(-90deg);filter:drop-shadow(0 0 14px rgba(0,194,255,.2));">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="16"/>
+                            <!-- dynamic slices injected by JS -->
+                        </svg>
+                        <div class="pm-donut-center">
+                            <div id="pm-avg-pct" class="pm-avg-pct">0<span>%</span></div>
+                            <div class="pm-avg-lbl">Avg Progress</div>
+                        </div>
+                    </div>
+                    <!-- Legend -->
+                    <div id="pm-legend" class="pm-legend"></div>
+                    <!-- Task Timeline -->
+                    <div class="pm-timeline-header">Quest Timeline</div>
+                    <div id="pm-timeline" class="pm-task-timeline"></div>
+                    <!-- Chips -->
+                    <div id="pm-chips" class="pm-chips"></div>
+                </div>
+
+                <!-- Right: Category Bars + Tasks -->
+                <div class="pm-bars-col">
+                    <div class="pm-bars-header">
+                        <span>📊 Development Breakdown</span>
+                        <span id="pm-overall-badge" class="premium-pct-badge">0%</span>
+                    </div>
+                    <div id="pm-bars" class="pm-bars"></div>
+                    <div class="pm-tasks-header">⚡ Active &amp; Upcoming</div>
+                    <div id="pm-tasks" class="pm-tasks-panel"></div>
+                    <div class="pm-history-section premium-glass-panel">
+                        <div class="pm-history-header">📜 Project History</div>
+                        <div id="pm-history-start" class="pm-history-start"></div>
+                        <div id="pm-history" class="pm-history-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { getProjects, DEFAULT_CATEGORIES, progressToDepartments, TASK_STATUS_META, formatProjectStartDate } from './firebase/firestore.js';
+
+        function animateCountUp(el, target, suffix, duration) {
+            if (!el) return;
+            suffix = suffix || '%';
+            duration = duration || 900;
+            var start = performance.now();
+            function step(now) {
+                var t = Math.min(1, (now - start) / duration);
+                var eased = 1 - Math.pow(1 - t, 3);
+                var val = Math.round(target * eased);
+                el.textContent = suffix === '/100' ? val + '/100' : val + suffix;
+                if (t < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const C = 2 * Math.PI * 80;
+        const statusMeta = {
+            upcoming: { label: '🔮 Upcoming', color: '#7A5FFF' },
+            running: { label: '⚡ In Progress', color: '#00C2FF' },
+            completed: { label: '✅ Completed', color: '#00FFD1' }
+        };
+
+        function buildDonutSlices(dept) {
+            var total = dept.reduce(function(s,d){ return s + d.pct; }, 0);
+            var cum = 0;
+            return dept.map(function(d) {
+                var len = (d.pct / (total || 1)) * C;
+                var gap = C - len;
+                var offset = -(cum / (total || 1)) * C;
+                cum += d.pct;
+                return '<circle cx="100" cy="100" r="80" fill="none" stroke="' + d.color + '" stroke-width="16"' +
+                       ' stroke-dasharray="' + len.toFixed(1) + ' ' + gap.toFixed(1) + '"' +
+                       ' stroke-dashoffset="' + offset.toFixed(1) + '" opacity="1"/>';
+            }).join('');
+        }
+
+        function buildLegend(dept) {
+            return dept.map(function(d) {
+                return '<div class="pm-legend-row premium-glass-panel">' +
+                       '  <span class="pm-legend-dot" style="background:' + d.color + ';box-shadow:0 0 8px ' + d.color + '66;"></span>' +
+                       '  <span class="pm-legend-name">' + d.icon + ' ' + d.name + '</span>' +
+                       '  <span class="pm-legend-val premium-pct-badge" style="color:' + d.color + ';border-color:' + d.color + '66;background:' + d.color + '18;">' + d.pct + '%</span>' +
+                       '</div>';
+            }).join('');
+        }
+
+        function taskMeta(status) {
+            return TASK_STATUS_META[status] || TASK_STATUS_META.locked;
+        }
+
+        function buildBars(dept, completedSections) {
+            completedSections = completedSections || {};
+            return dept.map(function(d, i) {
+                var done = !!completedSections[d.key];
+                return '<div class="pm-bar-item category-bar-item ' + (done ? 'section-complete' : '') + '" style="animation-delay:' + (i * 0.08) + 's">' +
+                       '  <div class="pm-bar-header">' +
+                       '    <div class="pm-bar-left">' +
+                       '      <div class="pm-bar-icon premium-cat-chip" style="background:' + d.color + '33;border-color:' + d.color + '66;box-shadow:0 0 8px ' + d.color + '33;">' + d.icon + '</div>' +
+                       '      <div><div class="pm-bar-cat">' + d.name + (done ? ' <span class="section-tick-badge">✅</span>' : '') + '</div><div class="pm-bar-level premium-pct-badge">[' + d.pct + '/100]</div></div>' +
+                       '    </div>' +
+                       '    <div class="pm-bar-pct" style="color:' + d.color + ';" data-count="' + d.pct + '">0<span>%</span></div>' +
+                       '  </div>' +
+                       '  <div class="pm-bar-bg premium-bar-track">' +
+                       '    <div class="pm-bar-fill premium-bar-fill category-bar-fill" data-w="' + d.pct + '" data-delay="' + (i * 80) + '" style="width:0%;background:' + (d.gradient || d.color) + ';box-shadow:0 0 12px ' + d.color + '55;"></div>' +
+                       '  </div>' +
+                       '</div>';
+            }).join('');
+        }
+
+        function buildTaskTimeline(tasks) {
+            if (!Array.isArray(tasks) || !tasks.length) {
+                return '<div class="pm-task-empty">No tasks yet</div>';
+            }
+            return tasks.slice().sort(function(a, b) { return (a.order || 0) - (b.order || 0); }).map(function(task, i) {
+                var meta = taskMeta(task.status);
+                var cat = DEFAULT_CATEGORIES[task.category] ? DEFAULT_CATEGORIES[task.category].label : task.category;
+                return '<div class="pm-task-node task-' + task.status + '" style="animation-delay:' + (i * 0.1) + 's">' +
+                       '  <div class="pm-task-node-dot">' + meta.icon + '</div>' +
+                       '  <div class="pm-task-node-card premium-glass-panel">' +
+                       '    <span class="pm-task-status-badge badge-' + task.status + '">' + meta.badge + '</span>' +
+                       '    <span class="task-cat">[' + cat + ']</span>' +
+                       '    <span class="task-title">' + task.title + '</span>' +
+                       '  </div>' +
+                       '</div>';
+            }).join('');
+        }
+
+        function buildTaskPanels(tasks) {
+            if (!Array.isArray(tasks) || !tasks.length) {
+                return '<div class="pm-task-empty">No tasks yet</div>';
+            }
+            var sorted = tasks.slice().sort(function(a, b) { return (a.order || 0) - (b.order || 0); });
+            var active = sorted.filter(function(t) { return t.status === 'active'; });
+            var upcoming = sorted.filter(function(t) { return t.status === 'locked'; });
+            var done = sorted.filter(function(t) { return t.status === 'done'; });
+            var html = '';
+
+            if (active.length) {
+                active.forEach(function(task) {
+                    var cat = DEFAULT_CATEGORIES[task.category] ? DEFAULT_CATEGORIES[task.category].label : task.category;
+                    html += '<div class="pm-active-hero premium-glass-panel">' +
+                            '  <div class="pm-active-label">⚡ Currently In Progress</div>' +
+                            '  <div class="pm-active-title">[' + cat + '] ' + task.title + '</div>' +
+                            '</div>';
+                });
+            } else {
+                html += '<div class="pm-no-active">No active task — check coming updates below</div>';
+            }
+
+            if (upcoming.length) {
+                html += '<div class="pm-upcoming-wrap"><div class="pm-upcoming-title">🔜 Coming Updates</div>';
+                upcoming.forEach(function(task, i) {
+                    var cat = DEFAULT_CATEGORIES[task.category] ? DEFAULT_CATEGORIES[task.category].label : task.category;
+                    html += '<div class="pm-upcoming-card task-locked" style="animation-delay:' + (i * 0.08) + 's">' +
+                            '  <span class="pm-upcoming-icon">🔜</span>' +
+                            '  <div><span class="pm-task-status-badge badge-locked">Coming Update</span>' +
+                            '  <span class="task-cat">[' + cat + ']</span> <span class="task-title">' + task.title + '</span></div>' +
+                            '</div>';
+                });
+                html += '</div>';
+            }
+
+            if (done.length) {
+                html += '<div class="pm-done-wrap"><div class="pm-done-title">✅ Completed</div>';
+                done.forEach(function(task) {
+                    var cat = DEFAULT_CATEGORIES[task.category] ? DEFAULT_CATEGORIES[task.category].label : task.category;
+                    html += '<div class="pm-done-card task-done">' +
+                            '  <span class="pm-done-icon">✅</span>' +
+                            '  <span class="task-cat">[' + cat + ']</span> <span class="task-title">' + task.title + '</span>' +
+                            '</div>';
+                });
+                html += '</div>';
+            }
+            return html;
+        }
+
+        function buildHistory(history, startDate) {
+            var items = [];
+            if (startDate) {
+                items.push({ date: startDate, title: 'Project Started', overallProgress: 0, note: 'Development kickoff', isStart: true });
+            }
+            (history || []).forEach(function(h) { items.push(h); });
+            if (!items.length) {
+                return '<div class="pm-history-empty">History will appear as progress is saved.</div>';
+            }
+            return items.map(function(h, i) {
+                return '<div class="pm-history-item ' + (h.isStart ? 'is-start' : '') + '" style="animation-delay:' + (i * 0.06) + 's">' +
+                       '  <div class="pm-history-dot">' + (h.isStart ? '🚀' : '📈') + '</div>' +
+                       '  <div class="pm-history-body">' +
+                       '    <div class="pm-history-top"><span class="pm-history-date">' + (h.date || '—') + '</span>' +
+                       '    <span class="pm-history-pct">' + (h.overallProgress || 0) + '%</span></div>' +
+                       '    <div class="pm-history-title">' + (h.title || 'Update') + '</div>' +
+                       (h.note ? '<div class="pm-history-note">' + h.note + '</div>' : '') +
+                       '  </div></div>';
+            }).join('');
+        }
+
+        window.openProjectModal = async function(id) {
+            try {
+                const projects = await getProjects();
+                const p = (projects || []).find((x) => x.modalId === id || x.id === id) || { title: 'Project Details', tech: '', status: 'running' };
+                const depts = progressToDepartments(p.progress || {});
+
+                const badge = document.getElementById('pm-badge');
+                const meta = statusMeta[p.status] || statusMeta['running'];
+                
+                badge.textContent = meta.label;
+                badge.style.setProperty('--badge-color', meta.color);
+                document.getElementById('pm-title').textContent = p.title;
+                document.getElementById('pm-tech').textContent = (p.techStack || p.tech || []).join(', ');
+
+                // Donut
+                const svg = document.getElementById('pm-donut-svg');
+                svg.innerHTML = '<circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="16"/>' + buildDonutSlices(depts);
+
+                // Avg
+                const avg = p.overallProgress !== undefined ? p.overallProgress : (depts.length > 0 ? Math.round(depts.reduce((s,d)=> s+d.pct,0) / depts.length) : 0);
+                const avgEl = document.getElementById('pm-avg-pct');
+                avgEl.innerHTML = '0<span>%</span>';
+
+                const overallBadge = document.getElementById('pm-overall-badge');
+                if (overallBadge) overallBadge.textContent = '0%';
+
+                // Legend
+                document.getElementById('pm-legend').innerHTML = buildLegend(depts);
+                document.getElementById('pm-timeline').innerHTML = buildTaskTimeline(p.tasks || []);
+
+                const startDate = p.startDate || formatProjectStartDate(p);
+
+                // Chips
+                const chips = p.status === 'completed'
+                    ? ['✔ Completed']
+                    : [`🚀 Started: ${startDate || 'TBD'}`, `🗓 ETA: ${p.eta || 'TBD'}`, p.priority || 'medium'];
+                document.getElementById('pm-chips').innerHTML = chips.map(c => `<span class="pm-chip premium-pct-badge">${c}</span>`).join('');
+
+                // Bars
+                document.getElementById('pm-bars').innerHTML = buildBars(depts, p.completedSections || {});
+                document.getElementById('pm-tasks').innerHTML = buildTaskPanels(p.tasks || []);
+
+                // History
+                document.getElementById('pm-history-start').innerHTML = startDate
+                    ? `<span class="pm-history-start-badge">🚀 Project started <strong>${startDate}</strong></span>`
+                    : '';
+                document.getElementById('pm-history').innerHTML = buildHistory(p.history || [], '');
+
+                // Show modal
+                const overlay = document.getElementById('proj-modal-overlay');
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        overlay.querySelectorAll('.pm-bar-fill').forEach(function(el) {
+                            var delay = parseInt(el.dataset.delay, 10) || 0;
+                            el.style.transitionDelay = delay + 'ms';
+                            el.style.width = el.dataset.w + '%';
+                        });
+                        overlay.querySelectorAll('.pm-bar-pct[data-count]').forEach(function(el) {
+                            var target = parseInt(el.dataset.count, 10) || 0;
+                            var start = performance.now();
+                            function tick(now) {
+                                var t = Math.min(1, (now - start) / 900);
+                                var val = Math.round(target * (1 - Math.pow(1 - t, 3)));
+                                el.innerHTML = val + '<span>%</span>';
+                                if (t < 1) requestAnimationFrame(tick);
+                            }
+                            requestAnimationFrame(tick);
+                        });
+                        (function animateAvg() {
+                            var start = performance.now();
+                            function tick(now) {
+                                var t = Math.min(1, (now - start) / 900);
+                                var val = Math.round(avg * (1 - Math.pow(1 - t, 3)));
+                                var el = document.getElementById('pm-avg-pct');
+                                if (el) el.innerHTML = val + '<span>%</span>';
+                                if (overallBadge) overallBadge.textContent = val + '%';
+                                if (t < 1) requestAnimationFrame(tick);
+                            }
+                            requestAnimationFrame(tick);
+                        })();
+                    });
+                });
+            } catch (err) {
+                console.error("Error opening project modal:", err);
+                alert('Unable to load project details right now.');
+            }
+        };
+
+        function closeProjectModal() {
+            document.getElementById('proj-modal-overlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        window.closeProjectModal = closeProjectModal;
+
+        document.getElementById('proj-modal-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeProjectModal();
+        });
+        document.querySelector('.proj-modal-close').addEventListener('click', closeProjectModal);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeProjectModal();
+        });
+    </script>
+
+</body>
+
+</html>

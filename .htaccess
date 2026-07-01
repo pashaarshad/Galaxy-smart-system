@@ -1,0 +1,26 @@
+DirectoryIndex index.html index.php
+Options -Indexes +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# Hostinger: /admin/ folder 403 fix — serve login before directory block
+RewriteRule ^admin/?$ admin/index.html [L]
+RewriteRule ^admin/dashboard/?$ admin/dashboard.html [L]
+RewriteRule ^admin/users/?$ admin/users.html [L]
+RewriteRule ^admin/team/?$ admin/team.html [L]
+RewriteRule ^admin/projects/?$ admin/projects.html [L]
+RewriteRule ^admin/orders/?$ admin/orders.html [L]
+RewriteRule ^admin/tech/?$ admin/tech.html [L]
+RewriteRule ^admin/messages/?$ admin/messages.html [L]
+RewriteRule ^admin/settings/?$ admin/settings.html [L]
+
+# Backup URL if /admin blocked by security
+RewriteRule ^galaxy-panel/?$ admin/index.html [L]
+
+# User dashboard
+RewriteRule ^dashboard/?$ user-dashboard/dashboard.html [L]
+RewriteRule ^auth/?$ user-dashboard/auth.html [L]
+RewriteRule ^login/?$ user-dashboard/auth.html [L]
+</IfModule>

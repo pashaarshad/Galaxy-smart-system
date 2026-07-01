@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/mobile-native.css">
+  <title>User Management - Galaxy Admin</title>
+</head>
+<body class="users-body">
+  <div class="users-bg-orb users-bg-orb-one"></div>
+  <div class="users-bg-orb users-bg-orb-two"></div>
+  <div id="admin-page-root"></div>
+
+  <template id="users-page-template">
+  <main class="users-shell users-fade-in">
+    <header class="users-header glass-card">
+      <div class="users-heading">
+        <h1>User Management</h1>
+        <p>Manage platform users, access roles, and account status in real-time.</p>
+        <a class="users-back-link" href="./dashboard.html">← Back to Dashboard</a>
+      </div>
+      <div class="users-top-actions">
+        <button id="add-user-btn" class="saas-btn saas-btn-primary">+ Add User</button>
+      </div>
+    </header>
+
+    <section class="users-stats">
+      <article class="users-stat glass-card">
+        <span>Total Users</span>
+        <strong id="stat-total-users">0</strong>
+      </article>
+      <article class="users-stat glass-card">
+        <span>Active Users</span>
+        <strong id="stat-active-users">0</strong>
+      </article>
+      <article class="users-stat glass-card">
+        <span>Blocked Users</span>
+        <strong id="stat-blocked-users">0</strong>
+      </article>
+      <article class="users-stat glass-card">
+        <span>Admin Users</span>
+        <strong id="stat-admin-users">0</strong>
+      </article>
+    </section>
+
+    <section class="users-toolbar glass-card">
+      <div class="users-search-wrap">
+        <input id="users-search" class="users-search-input" type="search" placeholder="Search name or email...">
+      </div>
+      <select id="users-filter-role" class="users-filter-select">
+        <option value="all">All Roles</option>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+      <select id="users-filter-status" class="users-filter-select">
+        <option value="all">All Status</option>
+        <option value="active">Active</option>
+        <option value="blocked">Blocked</option>
+      </select>
+      <button id="users-export-btn" class="saas-btn saas-btn-ghost" type="button">⬇ Export CSV</button>
+    </section>
+
+    <div id="users-error" class="users-alert"></div>
+
+    <section class="users-table-shell glass-card">
+      <div id="users-skeleton" class="users-skeleton-wrap">
+        <div class="users-skeleton-row"></div>
+        <div class="users-skeleton-row"></div>
+        <div class="users-skeleton-row"></div>
+      </div>
+
+      <div class="users-table-wrap">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Joined</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody"></tbody>
+        </table>
+      </div>
+
+      <div id="users-empty" class="users-empty-state">
+        <h3>No users found</h3>
+        <p>Create your first user to get started.</p>
+      </div>
+    </section>
+
+    <div id="users-mobile-list" class="users-mobile-list"></div>
+  </main>
+  </template>
+
+  <div id="user-modal" class="users-modal">
+    <div class="users-modal-box glass-card">
+      <h3 id="user-modal-title">Add New User</h3>
+      <div class="users-form-grid">
+        <div class="users-field">
+          <input id="um-name" type="text" placeholder=" ">
+          <label for="um-name">Name</label>
+        </div>
+        <div class="users-field">
+          <input id="um-email" type="email" placeholder=" ">
+          <label for="um-email">Email</label>
+        </div>
+        <div class="users-field">
+          <input id="um-phone" type="text" placeholder=" ">
+          <label for="um-phone">Phone (optional)</label>
+        </div>
+        <div class="users-field">
+          <select id="um-role">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+          </select>
+          <label for="um-role">Role</label>
+        </div>
+        <div class="users-field">
+          <select id="um-status">
+            <option value="active">active</option>
+            <option value="blocked">blocked</option>
+          </select>
+          <label for="um-status">Status</label>
+        </div>
+        <div class="users-field users-field-password" id="um-password-wrap">
+          <input id="um-password" type="password" placeholder=" ">
+          <label for="um-password">Password (min 8 chars)</label>
+        </div>
+        <div class="users-field users-field-password" id="um-confirm-wrap">
+          <input id="um-confirm" type="password" placeholder=" ">
+          <label for="um-confirm">Confirm Password</label>
+        </div>
+      </div>
+      <div class="users-modal-actions">
+        <button id="cancel-user-btn" class="saas-btn saas-btn-ghost">Cancel</button>
+        <button id="save-user-btn" class="saas-btn saas-btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="user-detail-modal" class="users-modal">
+    <div class="users-detail-box glass-card">
+      <div class="users-detail-header">
+        <h3>User Profile</h3>
+        <button id="close-detail-btn" class="users-detail-close" type="button">✕</button>
+      </div>
+      <div id="user-detail-body" class="users-detail-body"></div>
+      <div class="users-detail-actions">
+        <button id="detail-edit-btn" class="saas-btn saas-btn-ghost" type="button">✏ Edit</button>
+        <button id="detail-toggle-btn" class="saas-btn saas-btn-ghost" type="button">⛔ Block</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirm-modal" class="users-modal">
+    <div class="users-confirm-box glass-card">
+      <h3>Delete User?</h3>
+      <p>This action cannot be undone.</p>
+      <div class="users-modal-actions">
+        <button id="confirm-cancel-btn" class="saas-btn saas-btn-ghost">Cancel</button>
+        <button id="confirm-delete-btn" class="saas-btn saas-btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="users-toast-stack" class="users-toast-stack"></div>
+
+  <script type="module" src="./users.js"></script>
+</body>
+</html>

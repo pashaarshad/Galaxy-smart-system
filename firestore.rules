@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /tech/{techId} {
+      allow read, write: if true;
+    }
+
+    match /messages/{messageId} {
+      allow read, write: if true;
+    }
+
+    match /admins/{adminId} {
+      allow read, write: if true;
+    }
+
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if true;
+    }
+
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    match /project_status/{statusId} {
+      allow read, write: if true;
+    }
+
+    match /dept_data/{deptId} {
+      allow read, write: if true;
+    }
+
+    match /progress_stats/{statId} {
+      allow read, write: if true;
+    }
+
+    match /team_members/{memberId} {
+      allow read: if true;
+      allow write: if true;
+    }
+  }
+}
