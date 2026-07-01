@@ -77,6 +77,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "npx http-server . -p 5500",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
