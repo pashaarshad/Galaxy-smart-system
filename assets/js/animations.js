@@ -139,10 +139,62 @@ export function initNavbar() {
   btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+// ─── Theme Toggle ──────────────────────────────
+export function initThemeToggle() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) {
+    console.error('Theme toggle button not found in DOM');
+    return;
+  }
+
+  const sunIcon = toggle.querySelector('.theme-icon-sun');
+  const moonIcon = toggle.querySelector('.theme-icon-moon');
+
+  function updateIcons(isDark) {
+    if (sunIcon && moonIcon) {
+      sunIcon.style.setProperty('display', isDark ? 'block' : 'none', 'important');
+      moonIcon.style.setProperty('display', isDark ? 'none' : 'block', 'important');
+    }
+  }
+
+  // Load saved theme or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+
+  console.log('Initializing theme toggle. Saved:', savedTheme, 'System prefers dark:', systemPrefersDark, 'Applying dark theme:', isDark);
+
+  if (isDark) {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+  updateIcons(isDark);
+
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log('Theme toggle button clicked');
+    document.body.classList.toggle('dark-theme');
+    const currentlyDark = document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', currentlyDark ? 'dark' : 'light');
+    updateIcons(currentlyDark);
+    window.dispatchEvent(new CustomEvent('themechanged', { detail: { theme: currentlyDark ? 'dark' : 'light' } }));
+    console.log('Theme toggled. New state is dark:', currentlyDark);
+  });
+}
+
 // ─── Scroll Reveal ────────────────────────────
 let revealObserver = null;
 
 export function observeRevealElements(root = document) {
+  const scope = root?.querySelectorAll ? root : document;
+  const targets = scope.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+  if (!window.IntersectionObserver) {
+    targets.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
   if (!revealObserver) {
     revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
@@ -151,18 +203,24 @@ export function observeRevealElements(root = document) {
           revealObserver.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.02, rootMargin: '0px 0px -20px 0px' });
   }
 
-  const scope = root?.querySelectorAll ? root : document;
-  scope.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
-    .forEach((el) => {
-      if (!el.classList.contains('visible')) revealObserver.observe(el);
-    });
+  targets.forEach((el) => {
+    if (!el.classList.contains('visible')) revealObserver.observe(el);
+  });
 }
 
 export function initScrollReveal() {
   observeRevealElements(document);
+
+  // Global safety fallback: force reveal everything after 2.5 seconds in case scroll / observer fails
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
+        .forEach((el) => el.classList.add('visible'));
+    }, 2500);
+  });
 }
 
 // ─── Typing Animation ─────────────────────────

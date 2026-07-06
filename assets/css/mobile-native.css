@@ -31,7 +31,7 @@
     }
 
     body.mob-app-mode {
-        background: #FFFFFF;
+        background: var(--bg-primary);
     }
 
     /* ── Hide desktop-only chrome ── */
@@ -983,6 +983,44 @@
 
     body.mob-auth-app .auth-submit {
         width: 100%;
+    }
+
+    /* ── Dark Mode Overrides for Mobile App Mode ── */
+    body.dark-theme {
+        background-color: var(--bg-primary) !important;
+    }
+
+    body.dark-theme.mob-app-mode {
+        background-color: var(--bg-primary) !important;
+    }
+
+    body.dark-theme #navbar {
+        background: rgba(13, 17, 23, 0.92) !important;
+        border-bottom: 1px solid var(--border-glass) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    body.dark-theme .mob-tabbar {
+        background: rgba(22, 27, 34, 0.92) !important;
+        border-top: 1px solid var(--border-glass) !important;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    body.dark-theme .mob-tab {
+        color: #8B949E !important;
+    }
+
+    body.dark-theme .mob-tab.active {
+        color: #00C2FF !important;
+    }
+
+    body.dark-theme .mob-dash-sheet-panel {
+        background: var(--bg-card) !important;
+        border-top: 1px solid var(--border-glass) !important;
+    }
+
+    body.dark-theme .mob-dash-sheet-handle {
+        background: rgba(255, 255, 255, 0.2) !important;
     }
 }
 

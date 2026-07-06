@@ -8,6 +8,7 @@ import {
     initPreloader,
     initScrollProgress,
     initNavbar,
+    initThemeToggle,
     initParticles,
     initTyping,
     initScrollReveal,
@@ -28,29 +29,35 @@ import { initMobileNative } from './mobile-native.js';
 
 async function bootstrap() {
     // Cursor & preloader (immediate)
-    initCursor();
-    initPreloader();
-    initScrollProgress();
-    initNavbar();
-    initParticles();
-    initTyping();
+    try { initCursor(); } catch (e) { console.error('Cursor init failed:', e); }
+    try { initThemeToggle(); } catch (e) { console.error('ThemeToggle init failed:', e); }
+    try { initPreloader(); } catch (e) { console.error('Preloader init failed:', e); }
+    try { initScrollProgress(); } catch (e) { console.error('ScrollProgress init failed:', e); }
+    try { initNavbar(); } catch (e) { console.error('Navbar init failed:', e); }
+    try { initParticles(); } catch (e) { console.error('Particles init failed:', e); }
+    try { initTyping(); } catch (e) { console.error('Typing init failed:', e); }
 
     // Section renderers
-    initAbout();
-    initTeamMembers();
-    initServices();
-    initTechStack();
-    await initProjects();
-    initProjectStatus();
-    // initProgressGraph();  // content moved to modal
-    initContact();
-    initMobileNative();
+    try { initAbout(); } catch (e) { console.error('About init failed:', e); }
+    try { initTeamMembers(); } catch (e) { console.error('Team init failed:', e); }
+    try { initServices(); } catch (e) { console.error('Services init failed:', e); }
+    try { initTechStack(); } catch (e) { console.error('TechStack init failed:', e); }
+    
+    try {
+        await initProjects();
+    } catch (e) {
+        console.error('Projects init failed:', e);
+    }
+    
+    try { initProjectStatus(); } catch (e) { console.error('ProjectStatus init failed:', e); }
+    try { initContact(); } catch (e) { console.error('Contact init failed:', e); }
+    try { initMobileNative(); } catch (e) { console.error('MobileNative init failed:', e); }
 
     // After DOM is settled
     requestAnimationFrame(() => {
-        initScrollReveal();
-        initCounters();
-        initTilt();
+        try { initScrollReveal(); } catch (e) { console.error('ScrollReveal init failed:', e); }
+        try { initCounters(); } catch (e) { console.error('Counters init failed:', e); }
+        try { initTilt(); } catch (e) { console.error('Tilt init failed:', e); }
     });
 }
 
